@@ -11,6 +11,14 @@
   <p>Имя пользователя: {{user?.name}}</p>
   <p>Почта пользователя: {{user?.email}}</p>
 </div>
+<div>
+  <button (click)="ngAfterViewInit()">Init map!</button>
+  <button (click)="updateMap()">Add edge!</button>
+  <p>Имя пользователя: {{user?.name}}</p>
+  <p>Возраст пользователя: {{user?.email}}</p>
+  <p> {{edges[0]?.label}}</p>
+</div>
+
 <div #network></div>
 <ul>
   <li>

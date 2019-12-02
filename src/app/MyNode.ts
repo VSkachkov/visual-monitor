@@ -3,5 +3,5 @@ export class MyNode {
   size: 150;
   label: string;
   color: '#FFCFCF';
-  shape: string;
+  shape: 'box';
 }
