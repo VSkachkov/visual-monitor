@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
   nodes: MyNode[];
   edges: MyEdge[];
   constructor(private http: HttpClient) {
-    this.http.get('http://localhost:7000/users/1').subscribe((data: User) => this.user = data);
+    // this.http.get('http://localhost:7000/users/1').subscribe((data: User) => this.user = data);
     this.http.get('http://localhost:8080/stats/edges/').subscribe((data: MyEdge[]) => this.edges = data);
     this.http.get('http://localhost:8080/stats/nodes/').subscribe((data: MyNode[]) => this.nodes = data);
   }
@@ -27,7 +27,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('network') el: ElementRef;
 
   ngAfterViewInit() {
-    const user = User;
+
     const container = this.el.nativeElement;
     const nodes = new DataSet<any>([
     ]);
@@ -36,8 +36,6 @@ export class AppComponent implements AfterViewInit {
       node.color = '#FFCFCF';
     })
     nodes.add(this.nodes);
-    this.http.get('http://localhost:7000/nodes/').subscribe((data: MyEdge[]) => this.edges = data);
-
     const edges = new DataSet<any>([
     ]);
     edges.add(this.edges);
@@ -50,8 +48,6 @@ export class AppComponent implements AfterViewInit {
       height: '400px',
       edges: {
         smooth: true
-        // ,
-        // length: 200
       },
       layout: {
         randomSeed: 3,
@@ -74,6 +70,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   updateMap() {
+    // this.networkInstance = new Network(container, data, options);
 
   }
 }

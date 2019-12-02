@@ -28,11 +28,11 @@ export class UserComponent implements OnInit {
 
   onClickMe() {
     // this.clickMessage = 'You are my hero!';
-    this.http.get('http://localhost:7000/users/0').subscribe((data: User) => this.clickMessage = data.email);
+    // this.http.get('http://localhost:7000/users/0').subscribe((data: User) => this.clickMessage = data.email);
     // this.http.get('http://localhost:7000/users/0').subscribe();
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:7000/users/0').subscribe((data: string) => this.clickMessage = data);
+    // this.http.get('http://localhost:7000/users/0').subscribe((data: string) => this.clickMessage = data);
   }
 }
