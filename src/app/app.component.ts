@@ -4,20 +4,19 @@ import {HttpClient} from '@angular/common/http';
 import {User} from './user/user';
 import {MyNode} from './MyNode';
 import {MyEdge} from './MyEdge';
+import {NetworkService} from './services/network.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-// export class AppComponent implements AfterViewInit {
 export class AppComponent implements AfterViewInit {
 
   user: User;
   nodes: MyNode[];
   edges: MyEdge[];
-  constructor(private http: HttpClient) {
-    // this.http.get('http://localhost:7000/users/1').subscribe((data: User) => this.user = data);
+  constructor(private http: HttpClient, private networkService: NetworkService) {
     this.http.get('http://localhost:8080/stats/edges/').subscribe((data: MyEdge[]) => this.edges = data);
     this.http.get('http://localhost:8080/stats/nodes/').subscribe((data: MyNode[]) => this.nodes = data);
   }
@@ -27,7 +26,6 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('network') el: ElementRef;
 
   ngAfterViewInit() {
-
     const container = this.el.nativeElement;
     const nodes = new DataSet<any>([
     ]);
@@ -66,11 +64,14 @@ export class AppComponent implements AfterViewInit {
         'minVelocity': 2
       }
     };
-    this.networkInstance = new Network(container, data, options);
+    // this.networkInstance = new Network(container, data, options);
+    this.networkInstance = this.networkService.getNetwork(this.el.nativeElement);
   }
 
   updateMap() {
-    // this.networkInstance = new Network(container, data, options);
-
+    this.networkInstance = this.networkService.getNetwork(this.el.nativeElement);
+  }
+  updateEdge() {
+    this.networkInstance = this.networkService.updateNodes();
   }
 }
