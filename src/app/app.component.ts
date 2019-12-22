@@ -29,10 +29,7 @@ export class AppComponent implements AfterViewInit {
     const container = this.el.nativeElement;
     const nodes = new DataSet<any>([
     ]);
-    this.nodes.forEach(function (node) {
-      node.shape = 'box';
-      node.color = '#FFCFCF';
-    })
+
     nodes.add(this.nodes);
     const edges = new DataSet<any>([
     ]);
