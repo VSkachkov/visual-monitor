@@ -10,6 +10,6 @@ import {Adapter} from './Adapter';
 
 export class NodeAdapter implements Adapter<MyNode> {
   adapt(item: any): MyNode {
-    return new MyNode (item.id, item.label, item.code, item.heapCurrent, item.heapMax);
+    return new MyNode (item.id, item.label, item.state, item.code, item.heapCurrent, item.heapMax);
   }
 }

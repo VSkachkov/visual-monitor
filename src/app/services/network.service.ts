@@ -32,7 +32,7 @@ export class NetworkService {
         map((data: any[]) =>
           data.map(
             (item: any) =>
-              new MyNode(item.id, item.label, item.heapCurrent, item.heapMax, item.cpu)
+              new MyNode(item.id, item.label, item.state, item.heapCurrent, item.heapMax, item.cpu)
           )
         )
       ).subscribe((nodes: MyNode[]) => {
@@ -52,7 +52,7 @@ export class NetworkService {
     ]);
     this.nodes.forEach(function (node) {
       node.shape = 'box';
-      node.color = '#d7f4e6';
+      // node.color = '#d7f4e6';
     })
     nodes.add(this.nodes);
     this.edges.add(this.tmpEdges);
